@@ -1,0 +1,207 @@
+/* CSS Variables for colors */
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #FFC107;
+    --background-color: #F9F9F9;
+    --text-color: #333333;
+    --hover-color: #388E3C;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+}
+
+/* General Styles */
+body {
+    font-family: 'Tajawal', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    line-height: 1.6;
+}
+
+/* Headings hierarchy */
+h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 1rem;
+    font-weight: bold;
+}
+
+/* Spacing and borders */
+.container {
+    padding: 1rem;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px var(--shadow-color);
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Header */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Hero Section */
+.hero {
+    background: url('hero-bg.jpg') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.hero-content h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+/* Drivers Table */
+.drivers-section {
+    padding: 20px;
+}
+
+#drivers-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+#drivers-table thead {
+    background: linear-gradient(to right, var(--primary-color), #81C784);
+    color: white;
+}
+
+#drivers-table th, #drivers-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+#drivers-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.drivers-table img.permit-thumbnail {
+    width: 50px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.drivers-table img.permit-thumbnail:hover {
+    transform: scale(1.5);
+}
+
+.drivers-table {
+    overflow-x: auto;
+    display: block;
+    white-space: nowrap;
+}
+
+/* Quick Services */
+.quick-services {
+    text-align: center;
+    padding: 20px;
+}
+
+.quick-services button {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.quick-services button:hover {
+    background-color: var(--hover-color);
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+}
+
+/* Orders Today */
+.orders-today .company-card {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px var(--shadow-color);
+    padding: 16px;
+    margin: 8px;
+}
+
+.company-card:nth-child(1) {
+    background-color: #f0f8ff;
+}
+
+.company-card:nth-child(2) {
+    background-color: #ffe4e1;
+}
+
+/* Alert styles */
+.alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    z-index: 1000;
+    box-shadow: 0 4px 6px var(--shadow-color);
+    animation: fadeInOut 3s ease;
+}
+
+.alert-info {
+    background-color: var(--primary-color);
+}
+
+.alert-success {
+    background-color: #4CAF50;
+}
+
+.alert-danger {
+    background-color: #F44336;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(-10px); }
+    10% { opacity: 1; transform: translateY(0); }
+    90% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-10px); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 0.5rem;
+    }
+
+    .card {
+        padding: 0.5rem;
+    }
+}

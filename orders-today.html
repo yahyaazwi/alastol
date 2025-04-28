@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلبيات اليوم</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            text-align: right;
+        }
+        .orders-today {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h2 {
+            margin: 0;
+        }
+        .add-edit-btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .add-edit-btn:hover {
+            background-color: #0056b3;
+        }
+        .companies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .company-card {
+            flex: 1 1 calc(50% - 10px);
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .company-card h3 {
+            margin: 0 0 10px;
+        }
+        .manage-btn {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .manage-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="orders-today">
+        <div class="header">
+            <h2>طلبيات اليوم</h2>
+            <button class="add-edit-btn">إضافة/تعديل</button>
+        </div>
+        <div class="companies">
+            <div class="company-card">
+                <h3>شركة 1</h3>
+                <button class="manage-btn">إدارة</button>
+            </div>
+            <div class="company-card">
+                <h3>شركة 2</h3>
+                <button class="manage-btn">إدارة</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

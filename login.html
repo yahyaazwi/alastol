@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <img src="logo.png" alt="الشعار" class="login-logo center-logo">
+        <h2>تسجيل الدخول</h2>
+        <form id="loginForm" autocomplete="off">
+            <label for="name">الاسم:</label>
+            <input type="text" id="name" name="name" required placeholder="أدخل اسمك الكامل">
+
+            <label for="phone">رقم الهاتف:</label>
+            <input type="tel" id="phone" name="phone" required placeholder="05XXXXXXXX">
+
+            <label for="password">كلمة المرور:</label>
+            <div class="password-wrapper">
+                <input type="password" id="password" name="password" required placeholder="••••••••">
+                <button type="button" id="togglePassword" class="toggle-password-btn">إظهار</button>
+            </div>
+
+            <div id="otpSection" class="otp-section" style="display:none;">
+                <label for="otp">رمز التحقق (OTP):</label>
+                <input type="text" id="otp" name="otp" placeholder="أدخل الرمز المرسل">
+            </div>
+
+            <div id="errorMsg" class="error-msg" style="color:red;margin:8px 0;display:none;"></div>
+
+            <button type="submit">دخول</button>
+            <button type="button" id="otpLogin" class="otp-login-btn" style="margin-top:8px;">تسجيل الدخول عبر رمز OTP</button>
+        </form>
+        <a href="#" id="forgotPassword" class="forgot-password-link" style="display:block;margin-top:10px;">نسيت كلمة المرور؟</a>
+        <a href="#" id="registerLink" class="register-link" style="display:block;margin-top:8px;">تسجيل حساب جديد</a>
+    </div>
+    <script>
+    // التحقق من صحة رقم الهاتف
+    function isValidPhone(phone) {
+        return /^05\d{8}$/.test(phone);
+    }
+
+    // إظهار/إخفاء كلمة المرور
+    document.getElementById('togglePassword').onclick = function() {
+        const pwd = document.getElementById('password');
+        if (pwd.type === 'password') {
+            pwd.type = 'text';
+            this.textContent = 'إخفاء';
+        } else {
+            pwd.type = 'password';
+            this.textContent = 'إظهار';
+        }
+    };
+
+    // معالجة النموذج
+    document.getElementById('loginForm').onsubmit = function(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const password = document.getElementById('password').value;
+        const otpSection = document.getElementById('otpSection');
+        const otp = document.getElementById('otp').value.trim();
+        const errorMsg = document.getElementById('errorMsg');
+        errorMsg.style.display = 'none';
+
+        if (!name) {
+            errorMsg.textContent = 'يرجى إدخال الاسم.';
+            errorMsg.style.display = 'block';
+            return;
+        }
+        if (!isValidPhone(phone)) {
+            errorMsg.textContent = 'رقم الهاتف غير صحيح. يجب أن يبدأ بـ 05 ويتكون من 10 أرقام.';
+            errorMsg.style.display = 'block';
+            return;
+        }
+        if (otpSection.style.display === 'none' && !password) {
+            errorMsg.textContent = 'يرجى إدخال كلمة المرور.';
+            errorMsg.style.display = 'block';
+            return;
+        }
+        if (otpSection.style.display !== 'none' && !otp) {
+            errorMsg.textContent = 'يرجى إدخال رمز التحقق.';
+            errorMsg.style.display = 'block';
+            return;
+        }
+        // إرسال البيانات إلى backend (مثال)
+        // يمكنك استبدال هذا الجزء بطلب حقيقي إلى الخادم
+        errorMsg.style.color = 'green';
+        errorMsg.textContent = 'تم إرسال البيانات بنجاح!';
+        errorMsg.style.display = 'block';
+        setTimeout(()=>{errorMsg.style.display='none';},2000);
+        // إعادة تعيين النموذج
+        // this.reset();
+    };
+
+    // دعم تسجيل الدخول عبر OTP
+    document.getElementById('otpLogin').onclick = function() {
+        document.getElementById('otpSection').style.display = 'block';
+        document.getElementById('password').disabled = true;
+        document.getElementById('togglePassword').disabled = true;
+        this.disabled = true;
+        document.getElementById('errorMsg').style.display = 'none';
+        // هنا يمكنك إرسال رمز OTP إلى رقم الهاتف
+        alert('تم إرسال رمز التحقق إلى رقم الهاتف.');
+    };
+
+    // رابط نسيت كلمة المرور
+    document.getElementById('forgotPassword').onclick = function(e) {
+        e.preventDefault();
+        alert('يرجى التواصل مع الدعم لاستعادة كلمة المرور.');
+    };
+
+    // رابط تسجيل حساب جديد
+    document.getElementById('registerLink').onclick = function(e) {
+        e.preventDefault();
+        alert('سيتم تحويلك إلى صفحة التسجيل قريبًا.');
+    };
+    </script>
+</body>
+</html>
